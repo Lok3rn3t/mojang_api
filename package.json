@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "express": "^4.18.2",
+    "image-clipper": "^0.4.4",
+    "minecraft-server-util": "^5.4.2",
+    "mojang-api-js": "^1.0.1"
+  }
+}
