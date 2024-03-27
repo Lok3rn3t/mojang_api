@@ -10,7 +10,7 @@ const clipper = Clipper({
 
 const app = express();
 const options = {
-	timeout: 1000 * 5, // timeout in milliseconds
+	timeout: 200, // timeout in milliseconds
 	enableSRV: true // SRV record lookup
 };
 
