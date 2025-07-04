@@ -126,7 +126,7 @@ GET /server/{host}?port=25565
 ## Useful Links
 
 - [NestJS Documentation](https://docs.nestjs.com)
-- [Swagger UI](http://localhost:3000/)
+- [Swagger UI](https://swagger.io/)
 - [Project Issues](https://github.com/nestjs/nest/issues)
 
 ---
