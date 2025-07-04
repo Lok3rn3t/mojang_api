@@ -34,7 +34,6 @@ export class PlayerService {
       const ctx = canvas.getContext('2d');
       ctx.imageSmoothingEnabled = false;
 
-      // Draw the head
       ctx.drawImage(img, 8, 8, 8, 8, 0, 0, finalSize, finalSize);
 
       const hatCanvas = createCanvas(8, 8);
@@ -44,14 +43,9 @@ export class PlayerService {
       const imageData = hatCtx.getImageData(0, 0, 8, 8);
       const data = imageData.data;
 
-      // Check if the hat pixels are all transparent (old skin)
       let oldSkin = true;
       for (let i = 0; i < data.length; i += 4) {
-        const r = data[i];
-        const g = data[i + 1];
-        const b = data[i + 2];
-        const a = data[i + 3];
-
+        const [r, g, b, a] = [data[i], data[i + 1], data[i + 2], data[i + 3]];
         if (!(r === 0 && g === 0 && b === 0 && a === 255)) {
           oldSkin = false;
           break;
@@ -69,4 +63,21 @@ export class PlayerService {
       throw new InternalServerErrorException('Failed to render player head image');
     }
   }
+
+  async getFullSkinBase64(nickname: string): Promise<string> {
+    try {
+      const skinUrl = await this.getSkinUrl(nickname);
+      const img = await loadImage(skinUrl);
+
+      const canvas = createCanvas(img.width, img.height);
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+
+      return canvas.toDataURL();
+    } catch (error) {
+      if (error instanceof NotFoundException) throw error;
+      throw new InternalServerErrorException('Failed to load full skin');
+    }
+  }
+
 }

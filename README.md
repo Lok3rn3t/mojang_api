@@ -2,16 +2,17 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-# Mojang API – Minecraft Server & Player Head API
+# Mojang API – Minecraft Server & Skin API
 
-A RESTful API built with [NestJS](https://nestjs.com/) for retrieving Minecraft server status and player head images by nickname.
+A RESTful API built with [NestJS](https://nestjs.com/) for retrieving Minecraft server status and player skin images by nickname.
 
 ---
 
 ## Features
 
-- **Get Minecraft server info** (online status, MOTD, version, players, favicon)
-- **Get Minecraft player head** as a base64 PNG by nickname
+- **Get Minecraft server info**: Online status, MOTD, version, players, favicon.
+- **Get Minecraft player head**: Retrieve a player's head image as a base64 PNG by nickname.
+- **Get full Minecraft skin**: Retrieve the full skin image as a base64 PNG by nickname.
 
 ---
 
@@ -67,7 +68,7 @@ mojang_api/
 ### Get Minecraft Player Head
 
 ```
-GET /head/{nickname}?size=50
+GET /skin/{nickname}/head?size=50
 ```
 
 - **nickname**: Minecraft player nickname (required)
@@ -79,6 +80,22 @@ GET /head/{nickname}?size=50
   "nickname": "Notch",
   "size": 50,
   "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
+}
+```
+
+### Get Full Minecraft Skin
+
+```
+GET /skin/{nickname}/fullskin
+```
+
+- **nickname**: Minecraft player nickname (required)
+
+**Response:**
+```json
+{
+  "nickname": "Notch",
+  "image": "data:image/png;base64,..."
 }
 ```
 
@@ -126,7 +143,7 @@ GET /server/{host}?port=25565
 ## Useful Links
 
 - [NestJS Documentation](https://docs.nestjs.com)
-- [Swagger UI](https://swagger.io/)
+- [Swagger UI](http://localhost:3000/)
 - [Project Issues](https://github.com/nestjs/nest/issues)
 
 ---
