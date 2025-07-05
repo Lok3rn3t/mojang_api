@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  <img src="https://github.com/Lok3rn3t/mojang_api/blob/main/Logo.png" width="120" alt="Logo" />
 </p>
 
 # Mojang API – Minecraft Server & Skin API
